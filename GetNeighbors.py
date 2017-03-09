@@ -17,9 +17,8 @@ class Node(object):
 
 
 class Graph(object):
-    '''the graph'''
     def __init__(self, dims):
-        self.nodes = {}
+        self.nodes = {}dictionary of nodes
         for i in range(0, dims[0]):
             for j in range(0, dims[1]):
                 nodekey = str(i, ",", j)
@@ -27,7 +26,7 @@ class Graph(object):
                 self.nodes[nodekey] = node
 
 def test_nodes():
-    '''test the nodes'''
+    test the nodes
     graph = Graph([3, 3])
     node = get_node(2, graph)
     node.print_info()
