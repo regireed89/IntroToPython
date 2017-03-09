@@ -1,9 +1,12 @@
+'''get the neighbors'''
+
 import os
 import random
 import sys
 
+
 class Node(object):
-        
+
     def __init__(self, value, identifier):
         self.identifier = identifier
         self.value = value
@@ -13,35 +16,25 @@ class Node(object):
         print self.identifier
 
 
-
 class Graph(object):
+    '''the graph'''
+    def __init__(self, dims):
+        self.nodes = {}
+        for i in range(0, dims[0]):
+            for j in range(0, dims[1]):
+                nodekey = str(i, ",", j)
+                node = Node(nodekey, len(self.nodes))
+                self.nodes[nodekey] = node
 
-    def __init__(self,nodes):
-        self.nodes = nodes
+def test_nodes():
+    '''test the nodes'''
+    graph = Graph([3, 3])
+    node = get_node(2, graph)
+    node.print_info()
+    neighbors = get_neighbors(node, graph)
+    for nod in neighbors:
+        nod.print_info()
 
-    def GetNeighbors(node, graph):
-        
-        return list
 
-    def MakeNodes():
-         for i in range(0,25):
-            node = Node(i*i,i)
-            nodes.append(node)
-    graph = Graph(nodes)
-    gotnode = graph.GetNeighbors(10)
-    gotnode.print_info() 
-    
-      
-
-    
-        
-def GetNode(node, graph):
-    
-
-A = Node(1, "A")
-B = Node(2, "B")
-C = Node(3, "C")
-D = Node(4, "D")
-
-mymap = [A,B,C,D]
-print A.print_info()
+if __name__ == '__main__':
+    test_nodes()
