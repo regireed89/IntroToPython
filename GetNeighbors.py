@@ -3,8 +3,7 @@ import random
 import sys
 
 class Node(object):
-    
-    letter = ""
+        
     def __init__(self, value, identifier):
         self.identifier = identifier
         self.value = value
@@ -12,14 +11,13 @@ class Node(object):
 
 class Graph(object):
 
-    def __init__(self,g):
+    def __init__(self,nodes):
         self.nodes = nodses
-    
 
     def GetNeighbors(node, graph):
         return list;
 
-def makenodes():
+    def makenodes():
     nodes = []
     for i in range(0,25):
         node = Node(i*i,i)
@@ -28,3 +26,7 @@ def makenodes():
     gotnode = graph.GetNeighbors(10)
     gotnode.print_info()    
 
+
+
+A = Node(0,"A")
+B = Node(1, "B")
