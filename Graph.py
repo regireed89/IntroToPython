@@ -8,7 +8,7 @@ class Node(object):
         self.value = value
         self.identifier = identifier
 
-    def print_info(self):
+    def __print_info(self):
         '''print node info'''
         print self.value
         print self.identifier
@@ -27,7 +27,7 @@ class Graph(object):
 
     def get_node(self, node, graph):
         '''gets node'''
-        return self.graph[node]
+        return graph.node[node]
 
 
 def test_nodes():
