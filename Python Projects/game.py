@@ -15,8 +15,8 @@ BLUE = (0, 0, 255)
 GREEN = (0, 255, 0)
 RED = (255, 0, 0)
 PAD = (5, 5)
-ROWS = 25
-COLS = 25
+ROWS = 10
+COLS = 10
 WIDTH = 30
 HEIGHT = 30
 SCREEN_WIDTH = COLS * (PAD[0] + WIDTH) + PAD[1]
@@ -41,6 +41,9 @@ CLOCK = pygame.time.Clock()
 pygame.font.init()
 font1 = pygame.font.Font(None, 14)
 font2 = pygame.font.Font(None, 28)
+yep = [NODES[0], NODES[5], NODES[7], NODES[3], NODES[45]]
+for i in yep:
+    i.color = RED
 while not DONE:
 
     # This limits the while loop to a max of 10 times per second.

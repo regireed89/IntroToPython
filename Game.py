@@ -21,7 +21,7 @@ pygame.display.set_caption("Example code for the draw module")
 # Loop until the user clicks the close button.
 done = False
 clock = pygame.time.Clock()
-point = [(200, 0), (0, 150)]
+point = [200, 150]
 
 
 while not done:

@@ -17,10 +17,10 @@ class Node(object):
 class Graph(object):
     '''a graph'''
 
-    def __init__(self, length, width):
+    def __init__(self, x, y):
         self.node = {}
-        for i in range(0, length):
-            for j in range(0, width):
+        for i in range(0, x):
+            for j in range(0, y):
                 nodekey = str([i, ",", j])
                 node = Node(nodekey, len(self.node))
                 self.node[nodekey] = node
@@ -31,11 +31,28 @@ class Graph(object):
             return graph.node[node]
 
 
+def get_neighbors(node, graph):
+    '''gets nodes neighbors'''
+    graph.node[node] = graph.node[node] + 1
+    if graph.node[node] is None:
+        return
+    else:
+        return graph.node[node]
+
+    graph.node[node] = graph.node[node] + 1 
+    if graph.node[node] is None:
+        return
+    else:
+        return graph.node[node]
+            
+
 def test_nodes():
     '''test the nodes'''
     graph = Graph(3, 3)
     node = graph.get_node(2, graph)
     node.print_info()
+    nod = get_neighbors(2,graph)
+    nod.print_info()
 
 
 if __name__ == '__main__':
