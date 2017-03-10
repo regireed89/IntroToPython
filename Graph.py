@@ -27,7 +27,9 @@ class Graph(object):
 
     def get_node(self, node, graph):
         '''gets node'''
-        return graph.node[node]
+        for node in graph:
+            if node == graph.node:
+                return graph.node[node]
 
 
 def test_nodes():
