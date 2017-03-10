@@ -9,9 +9,9 @@ class Player(object):
         self.cardtotal = cardtotal
 
 
-Bob = Player(0)
-Jim = Player(0)
-Dembois = [Bob, Jim]
+__player1__ = Player(0)
+__player2__ = Player(0)
+__Dembois__ = [__player1__, __player2__]
 
 
 def hightotal(mylist):
@@ -26,4 +26,4 @@ def hightotal(mylist):
 
 
 if __name__ == '__main__':
-    hightotal(Dembois)
+    hightotal(__Dembois__)
