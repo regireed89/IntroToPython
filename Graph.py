@@ -25,9 +25,8 @@ class Graph(object):
                 node = Node(nodekey, len(self.node))
                 self.node[nodekey] = node
 
-    def get_node(self, node, graph):
+    def __get_node__(self, node, graph):
         '''gets node'''
-        @classmethod
         if node in graph.node:
             return graph.node[node]
 
@@ -35,29 +34,33 @@ class Graph(object):
 def get_neighbors(node, graph):
     '''gets nodes neighbors'''
     neighbors = []
-    right = get_node(node.nodekey[i + 1, j])
+    right = graph.get_node(node.v )
     if right is None:
         return
     else:
         neighbors.append(right)
 
-    left = get_node()
+    left = graph.get_node(node.nodekey[i - 1, j], graph)
     if left is None:
         return
     else:
         neighbors.append(left)
-
-         top = get_node()
+        top = graph.get_node(node.nodekey[i, j + 1], graph)
     if top is None:
         return
     else:
         neighbors.append(top)
-
-         bottom = get_node()
+        bottom = graph.get_node(node.nodekey[i, j - 1], g)
     if bottom is None:
         return
     else:
         neighbors.append(bottom)
+
+    return neighbors
+
+
+
+    
 
 
 def test_nodes():
