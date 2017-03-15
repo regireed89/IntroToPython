@@ -41,9 +41,17 @@ CLOCK = pygame.time.Clock()
 pygame.font.init()
 font1 = pygame.font.Font(None, 14)
 font2 = pygame.font.Font(None, 28)
-yep = [NODES[0], NODES[5], NODES[7], NODES[3], NODES[45]]
-for i in yep:
+walls = [NODES[42], NODES[43], NODES[44], NODES[45], NODES[46]]
+for i in walls:
+    i.color = BLACK
+    i.walkable = False
+start = [NODES[24]]
+for i in start:
+    i.color = GREEN
+end = [NODES[64]]
+for i in end:
     i.color = RED
+
 while not DONE:
 
     # This limits the while loop to a max of 10 times per second.

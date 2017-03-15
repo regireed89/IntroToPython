@@ -77,5 +77,15 @@ def test_graph(graph):
     for neighbor in neighbors:
         neighbor.print_info()
 
+
+def MHD(graph, start, end):
+    '''calculate manhattan distance'''
+    X = abs(graph.start.x - graph.end.x)
+    Y = abs(graph.start.y - graph.end.y)
+    return X + Y * 10
+
+
+G = Graph([3, 3])
 if __name__ == "__main__":
-    test_graph(Graph([3, 3]))
+    #test_graph(G)
+    MHD(G, G.get_node([2, 2]), G.get_node([0, 1]))

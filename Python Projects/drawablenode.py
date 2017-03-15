@@ -1,3 +1,4 @@
+'''drawablenode'''
 import pygame
 import math
 import graph
@@ -79,6 +80,14 @@ class DrawableNode(object):
     @property
     def color(self):
         return self._color
+
+    @property
+    def start(self):
+        return self.start
+
+    @property
+    def end(self):
+        return self.end
 
     @color.setter
     # manual setting of colors will mark them dirty so they will stay

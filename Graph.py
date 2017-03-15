@@ -50,7 +50,7 @@ def get_neighbors(node, graph):
         return
     else:
         neighbors.append(top)
-        bottom = graph.get_node(node.nodekey[i, j - 1], g)
+        bottom = graph.get_node(node.nodekey[i, j - 1], graph)
     if bottom is None:
         return
     else:
