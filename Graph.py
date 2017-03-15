@@ -28,24 +28,36 @@ class Graph(object):
     def get_node(self, node, graph):
         '''gets node'''
         @classmethod
-        if node == graph.node:
+        if node in graph.node:
             return graph.node[node]
 
 
 def get_neighbors(node, graph):
     '''gets nodes neighbors'''
     neighbors = []
-    graph.node[node] = graph.node[node.x] + 1
-    if graph.node[node] is None:
+    right = get_node(node.nodekey[i + 1, j])
+    if right is None:
         return
     else:
-        neighbors.append(graph.node[node])
+        neighbors.append(right)
 
-    graph.node[node] = graph.node[node.y] + 1
-    if graph.node[node] is None:
+    left = get_node()
+    if left is None:
         return
     else:
-        return graph.node[node]
+        neighbors.append(left)
+
+         top = get_node()
+    if top is None:
+        return
+    else:
+        neighbors.append(top)
+
+         bottom = get_node()
+    if bottom is None:
+        return
+    else:
+        neighbors.append(bottom)
 
 
 def test_nodes():
