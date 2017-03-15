@@ -34,11 +34,12 @@ class Graph(object):
 
 def get_neighbors(node, graph):
     '''gets nodes neighbors'''
+    neighbors = []
     graph.node[node] = graph.node[node.x] + 1
     if graph.node[node] is None:
         return
     else:
-        return graph.node[node]
+        neighbors.append(graph.node[node])
 
     graph.node[node] = graph.node[node.y] + 1
     if graph.node[node] is None:
