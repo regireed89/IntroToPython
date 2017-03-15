@@ -80,8 +80,8 @@ def test_graph(graph):
 
 def Manhattan(start, end):
     '''calculate manhattan distance'''
-    X = abs(start.nodekey.i - end.nodekey.i)
-    Y = abs(start.nodekey.j - end.nodekey.j)
+    X = abs(start. - end.)
+    Y = abs(start. - end.)
     return X + Y * 10
 
 
