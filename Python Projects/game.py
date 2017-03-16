@@ -1,7 +1,7 @@
 # Import a library of functions called 'pygame'
 import pygame
 import graph as graphs
-from graph import Graph
+from drawablenode import Graph
 from drawablenode import get_neighbors
 import drawablenode
 from drawablenode import *

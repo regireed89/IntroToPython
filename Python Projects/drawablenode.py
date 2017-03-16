@@ -22,6 +22,7 @@ class DrawableNode(object):
         self.width = SIZE
         self.height = SIZE
         self.id = id
+        self.value = self.id
         self.index = (self.posx, self.posy)
         self.x = (5 + self.width) * self.posx + 5
         self.y = (5 + self.height) * self.posy + 5
@@ -135,14 +136,24 @@ class DrawableNode(object):
                 screen.blit(textf, textfpos)
                 screen.blit(textg, textgpos)
 
+class Graph(object):
+    '''the graph'''
+
+    def __init__(self, dims):
+        cols = dims[0]
+        rows = dims[1]
+        self._nodes = {}
+        for i in range(0, cols):
+            for j in range(0, rows):
+                nodekey = str(i) + ',' + str(j)
+                self._nodes[nodekey] = DrawableNode([i, j])
 
 
-
-def get_node(node):
-    '''get a node by list [1,1]'''
-    nodekey = str(node[0]) + ',' + str(node[1])
-    if nodekey in node:
-        return node[nodekey]
+    def get_node(self, node):
+        '''get a node by list [1,1]'''
+        nodekey = str(node[0]) + ',' + str(node[1])
+        if nodekey in node:
+            return node[nodekey]
 
 
 def get_neighbors(node, graph):
@@ -166,7 +177,7 @@ def get_neighbors(node, graph):
     for i in dirs:
         item1 = i[0] + node.posx
         item2 = i[1] + node.posy
-        fetch_node = get_node([item1, item2])
+        fetch_node = graph.get_node([item1, item2])
         if fetch_node:
             neighbors.append(fetch_node)
     return neighbors
