@@ -76,18 +76,4 @@ def test_graph(graph):
     neighbors = get_neighbors(node, graph)
     for neighbor in neighbors:
         neighbor.print_info()
-
-
-def Manhattan(start, end):
-    '''calculate manhattan distance'''
-    X = abs(start. - end.)
-    Y = abs(start. - end.)
-    return X + Y * 10
-
-
-G = Graph([3, 3])
-
-if __name__ == "__main__":
-    #test_graph(G)
-    Manhattan(G.get_node([2, 2]), G.get_node([0, 1]))
- 
+        

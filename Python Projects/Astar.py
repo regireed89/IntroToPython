@@ -10,8 +10,12 @@ def Astar(start, end):
     g[start] = 0
 
 
-def MHD(graph, start, end):
+def Manhattan(start, end):
     '''calculate manhattan distance'''
-    X = abs(graph.start.x - graph.end.x)
-    Y = abs(graph.start.y - graph.end.y)
-    return print X + Y * 10
+    xtotal = abs(end.posx - start.posx)
+    ytotal = abs(end.posy - start.posy)
+    return (xtotal + ytotal) * 10
+
+
+def get_gval(current, n):
+    return 10 if n.posx == current.posx or n.posy == current.posy else 14

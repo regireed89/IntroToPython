@@ -5,6 +5,9 @@ from graph import Graph
 from graph import Node
 import drawablenode
 from drawablenode import *
+import Astar
+from Astar import Manhattan
+from Astar import get_gval
 # Initialize the game engine
 pygame.init()
 
@@ -17,8 +20,8 @@ RED = (255, 0, 0)
 PAD = (5, 5)
 ROWS = 10
 COLS = 10
-WIDTH = 30
-HEIGHT = 30
+WIDTH = 50
+HEIGHT = 50
 SCREEN_WIDTH = COLS * (PAD[0] + WIDTH) + PAD[1]
 SCREEN_HEIGHT = ROWS * (PAD[0] + HEIGHT) + PAD[1]
 # Set the height and width of the SCREEN
@@ -45,12 +48,14 @@ walls = [NODES[42], NODES[43], NODES[44], NODES[45], NODES[46]]
 for i in walls:
     i.color = BLACK
     i.walkable = False
-start = [NODES[24]]
-for i in start:
-    i.color = GREEN
-end = [NODES[64]]
-for i in end:
-    i.color = RED
+start = NODES[1]
+start = pygame.MOUSEBUTTONDOWN
+start.color = GREEN
+end = NODES[55]
+end.color = RED
+for i in NODES:
+   i.h = Manhattan(i, end)
+   #i.g = get_gval(i, )
 
 while not DONE:
 
@@ -78,5 +83,7 @@ while not DONE:
     textrect = bg.get_rect()
     pygame.display.flip()
 
+
 # Be IDLE friendly
 pygame.quit()
+

@@ -5,13 +5,14 @@ import graph
 from graph import Graph
 from graph import Node
 
+
 class DrawableNode(object):
     '''drawable node'''
 
     def __init__(self, graphnode):
         # astar vars
-        posx = graphnode.value[0]
-        posy = graphnode.value[1]
+        self.posx = graphnode.value[0]
+        self.posy = graphnode.value[1]
         self.adjacents = []
         self.parent = None
         self._walkable = True
@@ -20,19 +21,19 @@ class DrawableNode(object):
         self._f = 0
 
         # drawing vars
-        SIZE = 30
+        SIZE = 50
         self.width = SIZE
         self.height = SIZE
         self.id = id
-        self.index = (posx, posy)
-        self.x = (5 + self.width) * posx + 5
-        self.y = (5 + self.height) * posy + 5
-        self.pos = (self.width * posx, self.height * posy)
+        self.index = (self.posx, self.posy)
+        self.x = (5 + self.width) * self.posx + 5
+        self.y = (5 + self.height) * self.posy + 5
+        self.pos = (self.width * self.posx, self.height * self.posy)
         self.screenpos = (self.x, self.y)
         self.rect = pygame.Rect(self.x, self.y, self.width, self.height)
         self.surface = pygame.Surface((self.width, self.height))
         self.dirty = False
-        self._color =  (125, 255, 255)
+        self._color = (125, 255, 255)
 
     # properties
     @property
@@ -137,4 +138,4 @@ class DrawableNode(object):
                 screen.blit(textf, textfpos)
                 screen.blit(textg, textgpos)
 
-   
+
