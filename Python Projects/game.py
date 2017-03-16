@@ -3,6 +3,7 @@ import pygame
 import graph as graphs
 from graph import Graph
 from graph import Node
+from graph import get_neighbors
 import drawablenode
 from drawablenode import *
 import Astar
@@ -49,13 +50,13 @@ for i in walls:
     i.color = BLACK
     i.walkable = False
 start = NODES[1]
-start = pygame.MOUSEBUTTONDOWN
 start.color = GREEN
 end = NODES[55]
 end.color = RED
 for i in NODES:
    i.h = Manhattan(i, end)
-   #i.g = get_gval(i, )
+   i.g = get_gval(i, )
+
 
 while not DONE:
 
