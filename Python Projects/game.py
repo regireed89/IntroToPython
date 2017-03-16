@@ -2,13 +2,12 @@
 import pygame
 import graph as graphs
 from graph import Graph
-from graph import Node
-from graph import get_neighbors
+from drawablenode import get_neighbors
 import drawablenode
 from drawablenode import *
 import Astar
 from Astar import Manhattan
-from Astar import get_gval
+from Astar import set_gscore
 # Initialize the game engine
 pygame.init()
 
@@ -54,12 +53,14 @@ start.color = GREEN
 end = NODES[55]
 end.color = RED
 for i in NODES:
-   i.h = Manhattan(i, end)
-   i.g = get_gval(i, )
+    i.h = Manhattan(i, end)
+start.adjacents = get_neighbors(start, search_space)
+for a in start.adjacents:
+    a.g = set_gscore(start, a)
+
 
 
 while not DONE:
-
     # This limits the while loop to a max of 10 times per second.
     # Leave this out and we will use all CPU we can.
     CLOCK.tick(10)
@@ -87,4 +88,3 @@ while not DONE:
 
 # Be IDLE friendly
 pygame.quit()
-

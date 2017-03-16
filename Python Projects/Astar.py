@@ -1,5 +1,5 @@
 '''a* game'''
-
+import drawablenode
 
 def Astar(start, end):
     '''astar algorithm'''
@@ -17,5 +17,6 @@ def Manhattan(start, end):
     return (xtotal + ytotal) * 10
 
 
-def get_gval(current, n):
-    return 10 if n.posx == current.posx or n.posy == current.posy else 14
+def set_gscore(current, adjacent):
+    '''sets gscore for node'''
+    return 10 if adjacent.posx == current.posx or adjacent.posy == current.posy else 14

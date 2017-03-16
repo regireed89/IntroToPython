@@ -1,9 +1,6 @@
 '''drawablenode'''
 import pygame
 import math
-import graph
-from graph import Graph
-from graph import Node
 
 
 class DrawableNode(object):
@@ -139,3 +136,37 @@ class DrawableNode(object):
                 screen.blit(textg, textgpos)
 
 
+
+
+def get_node(node):
+    '''get a node by list [1,1]'''
+    nodekey = str(node[0]) + ',' + str(node[1])
+    if nodekey in node:
+        return node[nodekey]
+
+
+def get_neighbors(node, graph):
+    '''get neighbors for a node'''
+
+    right = [1, 0]
+    top_right = [1, -1]
+
+    top = [0, -1]
+    top_left = [-1, -1]
+
+    left = [-1, 0]
+    bottom_left = [-1, 1]
+
+    bottom = [0, 1]
+    bottom_right = [1, 1]
+    neighbors = []
+    dirs = [right, top_right, top, top_left,
+            left, bottom_left, bottom, bottom_right]
+
+    for i in dirs:
+        item1 = i[0] + node.posx
+        item2 = i[1] + node.posy
+        fetch_node = get_node([item1, item2])
+        if fetch_node:
+            neighbors.append(fetch_node)
+    return neighbors
