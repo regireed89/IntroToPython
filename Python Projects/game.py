@@ -34,6 +34,8 @@ for i in range(0, ROWS):
         node = DrawableNode([i, j], count)
         NODES.append(node)
         count += 1
+for i in NODES:
+    i.get_neighbors(i, NODES)
 
 
 pygame.display.set_caption("Example code for the draw module")

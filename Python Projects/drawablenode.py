@@ -17,6 +17,14 @@ class DrawableNode(object):
         self._h = 0
         self._f = 0
 
+        def get_neighbors(self, node, listt):
+            neighbors = []
+            right = listt[node.posx + 1]
+            top_right = listt[node.posx + 1, node.posy + 1]
+            top = listt[node.posx + 1]
+            neighbors.append(right)
+            return neighbors
+
         # drawing vars
         SIZE = 50
         self.width = SIZE
