@@ -5,9 +5,7 @@ from drawablenode import Graph
 from drawablenode import get_neighbors
 import drawablenode
 from drawablenode import *
-import Astar
-from Astar import Manhattan
-from Astar import set_gscore
+
 # Initialize the game engine
 pygame.init()
 
@@ -30,10 +28,13 @@ SCREEN = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
 search_space = Graph([ROWS, COLS])
 
 NODES = []
-for i in range(ROWS):
-    for j in range(COLS):
-        node = search_space.get_node([i, j])
-        NODES.append(DrawableNode(node))
+count = 0
+for i in range(0, ROWS):
+    for j in range(0, COLS):
+        node = search_space.get_node([i ,j], NODES)
+        NODES.append(DrawableNode(node, count))
+        count += 1
+
 
 pygame.display.set_caption("Example code for the draw module")
 
@@ -52,11 +53,7 @@ start = NODES[1]
 start.color = GREEN
 end = NODES[55]
 end.color = RED
-for i in NODES:
-    i.h = Manhattan(i, end)
-start.adjacents = get_neighbors(start, search_space)
-for a in start.adjacents:
-    a.g = set_gscore(start, a)
+
 
 
 

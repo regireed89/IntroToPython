@@ -6,10 +6,10 @@ import math
 class DrawableNode(object):
     '''drawable node'''
 
-    def __init__(self, graphnode):
+    def __init__(self, graphnode, ident):
         # astar vars
-        self.posx = graphnode.value[0]
-        self.posy = graphnode.value[1]
+        self.posx = graphnode[0]
+        self.posy = graphnode[1]
         self.adjacents = []
         self.parent = None
         self._walkable = True
@@ -21,9 +21,8 @@ class DrawableNode(object):
         SIZE = 50
         self.width = SIZE
         self.height = SIZE
-        self.id = id
-        self.value = self.id
-        self.index = (self.posx, self.posy)
+        self.identification = ident
+        self.index = [self.posx, self.posy]
         self.x = (5 + self.width) * self.posx + 5
         self.y = (5 + self.height) * self.posy + 5
         self.pos = (self.width * self.posx, self.height * self.posy)
@@ -142,18 +141,16 @@ class Graph(object):
     def __init__(self, dims):
         cols = dims[0]
         rows = dims[1]
-        self._nodes = {}
+        self._nodes = []
         for i in range(0, cols):
             for j in range(0, rows):
-                nodekey = str(i) + ',' + str(j)
-                self._nodes[nodekey] = DrawableNode([i, j])
+                self._nodes = DrawableNode([i, j], (i, j))
 
 
-    def get_node(self, node):
+    def get_node(self, node, listt):
         '''get a node by list [1,1]'''
-        nodekey = str(node[0]) + ',' + str(node[1])
-        if nodekey in node:
-            return node[nodekey]
+        if node in listt:
+            return listt[node]
 
 
 def get_neighbors(node, graph):
