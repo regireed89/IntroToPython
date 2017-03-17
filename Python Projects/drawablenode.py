@@ -6,10 +6,10 @@ import math
 class DrawableNode(object):
     '''drawable node'''
 
-    def __init__(self, graphnode, ident):
+    def __init__(self, graphpos, ident):
         # astar vars
-        self.posx = graphnode[0]
-        self.posy = graphnode[1]
+        self.posx = graphpos[0]
+        self.posy = graphpos[1]
         self.adjacents = []
         self.parent = None
         self._walkable = True
@@ -135,6 +135,7 @@ class DrawableNode(object):
                 screen.blit(textf, textfpos)
                 screen.blit(textg, textgpos)
 
+
 class Graph(object):
     '''the graph'''
 
@@ -146,11 +147,10 @@ class Graph(object):
             for j in range(0, rows):
                 self._nodes = DrawableNode([i, j], (i, j))
 
-
-    def get_node(self, node, listt):
+    def get_node(self, node):
         '''get a node by list [1,1]'''
-        if node in listt:
-            return listt[node]
+        if node in self._nodes:
+            return self._nodes[node]
 
 
 def get_neighbors(node, graph):

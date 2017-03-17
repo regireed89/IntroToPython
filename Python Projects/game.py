@@ -31,8 +31,8 @@ NODES = []
 count = 0
 for i in range(0, ROWS):
     for j in range(0, COLS):
-        node = search_space.get_node([i ,j], NODES)
-        NODES.append(DrawableNode(node, count))
+        node = DrawableNode([i, j], count)
+        NODES.append(node)
         count += 1
 
 
@@ -53,8 +53,6 @@ start = NODES[1]
 start.color = GREEN
 end = NODES[55]
 end.color = RED
-
-
 
 
 while not DONE:
