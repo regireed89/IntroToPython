@@ -7,6 +7,7 @@ class DrawableNode(object):
     '''drawable node'''
 
     def __init__(self, graphpos, ident):
+        '''init'''
         # astar vars
         self.posx = graphpos[0]
         self.posy = graphpos[1]
@@ -17,14 +18,6 @@ class DrawableNode(object):
         self._h = 0
         self._f = 0
 
-        def get_neighbors(self, node, listt):
-            neighbors = []
-            right = listt[node.posx + 1]
-            top_right = listt[node.posx + 1, node.posy + 1]
-            top = listt[node.posx + 1]
-            neighbors.append(right)
-            return neighbors
-
         # drawing vars
         SIZE = 50
         self.width = SIZE
@@ -34,11 +27,41 @@ class DrawableNode(object):
         self.x = (5 + self.width) * self.posx + 5
         self.y = (5 + self.height) * self.posy + 5
         self.pos = (self.width * self.posx, self.height * self.posy)
-        self.screenpos = (self.x, self.y)
+        self.screenpos = (self.y, self.x)
         self.rect = pygame.Rect(self.x, self.y, self.width, self.height)
         self.surface = pygame.Surface((self.width, self.height))
         self.dirty = False
         self._color = (125, 255, 255)
+
+    def get_node(self, listt):
+        '''get a node by list [1,1]'''
+        if self.index in listt:
+            return self.index
+
+    def get_neighbors(self, listt):
+        '''gets the neighbors of a node'''
+        right = [1, 0]
+        top_right = [1, -1]
+
+        top = [0, -1]
+        top_left = [-1, -1]
+
+        left = [-1, 0]
+        bottom_left = [-1, 1]
+
+        bottom = [0, 1]
+        bottom_right = [1, 1]
+        neighbors = []
+        dirs = [right, top_right, top, top_left,
+                left, bottom_left, bottom, bottom_right]
+
+        for i in dirs:
+            item1 = i[0] + self.posx
+            item2 = i[1] + self.posy
+            fetch_node = self.get_node([item1, item2])
+            if fetch_node:
+                neighbors.append(fetch_node)
+        return neighbors
 
     # properties
     @property

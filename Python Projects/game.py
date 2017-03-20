@@ -34,8 +34,6 @@ for i in range(0, ROWS):
         node = DrawableNode([i, j], count)
         NODES.append(node)
         count += 1
-for i in NODES:
-    i.get_neighbors(i, NODES)
 
 
 pygame.display.set_caption("Example code for the draw module")
@@ -51,11 +49,13 @@ walls = [NODES[42], NODES[43], NODES[44], NODES[45], NODES[46]]
 for i in walls:
     i.color = BLACK
     i.walkable = False
-start = NODES[1]
+start = NODES[0]
 start.color = GREEN
 end = NODES[55]
 end.color = RED
-
+bob = start.get_neighbors(NODES)
+for i in bob:
+    i.color = BLUE
 
 while not DONE:
     # This limits the while loop to a max of 10 times per second.
