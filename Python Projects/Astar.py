@@ -17,11 +17,15 @@ def Astar(start, end):
         openlist.sort(key=lambda x: x.f)
         current = openlist[0]
         if current == end:
-            retrace(camefrom, current)
-
+            retrace(start, end)
         openlist.remove(current)
         closedlist.append(current)
-        get_neighbors(current, NODES)
+        neibz = get_neighbors(current, NODES)
+        for n in neibz:
+            if n in closedlist:
+                continue
+            tentative_g = current.g + set_gscore(current, n)
+
 
 
 def Manhattan(start, end):
@@ -36,5 +40,11 @@ def set_gscore(current, adjacent):
     return 10 if adjacent.posx == current.posx or adjacent.posy == current.posy else 14
 
 
-def retrace(alist, current):
+def retrace(start, end):
     '''retraces the path'''
+    path = []
+    i = end
+    while i is not start:
+        path.append(itera)
+        i = i.parent
+    return path
