@@ -49,13 +49,14 @@ walls = [NODES[42], NODES[43], NODES[44], NODES[45], NODES[46]]
 for i in walls:
     i.color = BLACK
     i.walkable = False
-start = NODES[0]
+start = NODES[79]
 start.color = GREEN
 end = NODES[55]
 end.color = RED
 bob = start.get_neighbors(NODES)
 for i in bob:
     i.color = BLUE
+
 
 while not DONE:
     # This limits the while loop to a max of 10 times per second.
