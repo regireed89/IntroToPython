@@ -35,19 +35,20 @@ class DrawableNode(object):
 
     def get_neighbors(self, listt):
         '''gets the neighbors of a node'''
-        right = listt[self.identification + 10]
-        top_right = listt[self.identification + 9]
-
-        top = listt[self.identification - 1]
-        top_left = listt[self.identification - 11]
-
-        left = listt[self.identification - 10]
-        bottom_left = listt[self.identification - 9]
-
-        bottom = listt[self.identification + 1]
-        bottom_right = listt[self.identification + 11]
-        dirs = [right, top_right, top, top_left, left, bottom_left, bottom, bottom_right]
-        return dirs
+        for self in listt:
+            right = listt[self.identification + 10]
+            top_right = listt[self.identification + 9]
+            top = listt[self.identification - 1]
+            top_left = listt[self.identification - 11]
+            left = listt[self.identification - 10]
+            bottom_left = listt[self.identification - 9]
+            bottom = listt[self.identification + 1]
+            bottom_right = listt[self.identification + 11]
+            self.adjacents = [right, top_right, top, top_left, left, bottom_left, bottom, bottom_right]
+            for i in self.adjacents:
+                if i is None:
+                    self.adjacents.remove(i)
+        return self.adjacents
 
 
     # properties

@@ -1,30 +1,36 @@
 '''a* game'''
 from drawablenode import get_neighbors
-from game import NODES
 
 
-def Astar(start, end):
+
+def astar(start, end):
     '''astar algorithm'''
     openlist = []
     closedlist = []
     camefrom = []
     openlist.append(start)
     start.g = 0
-    for i in openlist:
-        i.g = i.set_gscore(start, start.adjacent)
-        i.h = i.Manhattan(i, end)
-    while not openlist:
+    while len(openlist) != 0:
         openlist.sort(key=lambda x: x.f)
         current = openlist[0]
-        if current == end:
-            retrace(start, end)
         openlist.remove(current)
         closedlist.append(current)
-        neibz = get_neighbors(current, NODES)
-        for n in neibz:
-            if n in closedlist:
+        if current == end:
+            camefrom = retrace(start, end)
+            return camefrom
+        for node in current.adjacents:
+            if node in closedlist:
                 continue
-            tentative_g = current.g + set_gscore(current, n)
+            set_gscore(current, node)
+            tentative_g = current.g + set_gscore(current, node)
+            if node not in openlist:
+                openlist.append(node)
+            elif tentative_g >= node.g:
+                continue
+            node.parent = current
+            node.g = tentative_g
+            node.h = Manhattan(node, end)
+            node.f = node.g + node.h
 
 
 
@@ -45,6 +51,6 @@ def retrace(start, end):
     path = []
     i = end
     while i is not start:
-        path.append(itera)
+        path.append(i)
         i = i.parent
     return path
