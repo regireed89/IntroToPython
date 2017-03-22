@@ -35,20 +35,51 @@ class DrawableNode(object):
 
     def get_neighbors(self, listt):
         '''gets the neighbors of a node'''
+        dirs = []
         for self in listt:
             right = listt[self.identification + 10]
+            dirs.append(right)
+            if right not in listt:
+                dirs.remove(right)
+
             top_right = listt[self.identification + 9]
+            dirs.append(top_right)
+            if top_right not in listt:
+                dirs.remove(top_right)
+
             top = listt[self.identification - 1]
+            dirs.append(top)
+            if top not in listt:
+                dirs.remove(top)
+
             top_left = listt[self.identification - 11]
+            dirs.append(top_left) 
+            if top_left not in listt:
+                dirs.remove(top_left)
+
             left = listt[self.identification - 10]
+            dirs.append(left)
+            if left not in listt:
+                dirs.remove(left)
+
             bottom_left = listt[self.identification - 9]
+            dirs.append(bottom_left)
+            if bottom_left not in listt:
+                dirs.remove(bottom_left)
+
             bottom = listt[self.identification + 1]
+            dirs.append(bottom) 
+            if bottom not in listt:
+                dirs.remove(bottom)
+
             bottom_right = listt[self.identification + 11]
-            self.adjacents = [right, top_right, top, top_left, left, bottom_left, bottom, bottom_right]
-            for i in self.adjacents:
-                if i is None:
-                    self.adjacents.remove(i)
-        return self.adjacents
+            dirs.append(bottom_right)
+            if bottom_right not in listt:
+                dirs.remove(bottom_right)
+
+            self.adjacents = list(dirs)
+
+            return self.adjacents
 
 
     # properties
@@ -155,45 +186,3 @@ class DrawableNode(object):
                 screen.blit(textg, textgpos)
 
 
-class Graph(object):
-    '''the graph'''
-
-    def __init__(self, dims):
-        cols = dims[0]
-        rows = dims[1]
-        self._nodes = []
-        for i in range(0, cols):
-            for j in range(0, rows):
-                self._nodes = DrawableNode([i, j], (i, j))
-
-    def get_node(self, node):
-        '''get a node by list [1,1]'''
-        if node in self._nodes:
-            return self._nodes[node]
-
-
-def get_neighbors(node, graph):
-    '''get neighbors for a node'''
-
-    right = [1, 0]
-    top_right = [1, -1]
-
-    top = [0, -1]
-    top_left = [-1, -1]
-
-    left = [-1, 0]
-    bottom_left = [-1, 1]
-
-    bottom = [0, 1]
-    bottom_right = [1, 1]
-    neighbors = []
-    dirs = [right, top_right, top, top_left,
-            left, bottom_left, bottom, bottom_right]
-
-    for i in dirs:
-        item1 = i[0] + node.posx
-        item2 = i[1] + node.posy
-        fetch_node = graph.get_node([item1, item2])
-        if fetch_node:
-            neighbors.append(fetch_node)
-    return neighbors

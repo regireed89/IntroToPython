@@ -1,5 +1,4 @@
 '''a* game'''
-from drawablenode import get_neighbors
 
 
 

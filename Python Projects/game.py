@@ -1,8 +1,6 @@
 # Import a library of functions called 'pygame'
 import pygame
 import graph as graphs
-from drawablenode import Graph
-from drawablenode import get_neighbors
 import drawablenode
 from drawablenode import *
 from Astar import astar
@@ -28,7 +26,6 @@ SCREEN_HEIGHT = ROWS * (PAD[0] + HEIGHT) + PAD[1]
 # Set the height and width of the SCREEN
 
 SCREEN = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
-search_space = Graph([ROWS, COLS])
 
 NODES = []
 count = 0
@@ -52,16 +49,15 @@ walls = [NODES[42], NODES[43], NODES[44], NODES[45], NODES[46]]
 for i in walls:
     i.color = BLACK
     i.walkable = False
-     
+
 start = NODES[79]
 start.color = GREEN
 end = NODES[55]
 end.color = RED
 for i in NODES:
-    i.get_neighbors(NODES)
+    #i.get_neighbors(NODES)
     i.h = Manhattan(i, end)
 
-t = 0
 while not DONE:
     # This limits the while loop to a max of 10 times per second.
     # Leave this out and we will use all CPU we can.
@@ -71,7 +67,6 @@ while not DONE:
     for event in pygame.event.get():  # User did something
         if event.type == pygame.QUIT:  # If user clicked close
             DONE = True  # Flag that we are DONE so we exit this loop
-
 
     # All drawing code happens after the for loop and but
     # inside the main while DONE==False loop.
