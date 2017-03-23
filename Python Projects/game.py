@@ -52,17 +52,18 @@ for i in walls:
 for i in NODES:
     i.get_neighbors(NODES)
 
+
 start = NODES[79]
 start.color = GREEN
 end = NODES[55]
 end.color = RED
 
 
-astar(start, end)
 while not DONE:
     # This limits the while loop to a max of 10 times per second.
     # Leave this out and we will use all CPU we can.
     CLOCK.tick(10)
+    
 
     for event in pygame.event.get():  # User did something
         if event.type == pygame.QUIT:  # If user clicked close

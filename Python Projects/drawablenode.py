@@ -38,44 +38,36 @@ class DrawableNode(object):
         '''gets the neighbors of a node'''
         dirs = []
         right = listt[self.identification + 10]
-        dirs.append(right)
-        if right not in listt:
-            right = None
+        if right is not None:
+            dirs.append(right) 
 
         top_right = listt[self.identification + 9]
-        dirs.append(top_right)
-        if top_right not in listt:
-            dirs.remove(top_right)
+        if top_right is not None:
+            dirs.append(top_right)
 
         top = listt[self.identification - 1]
-        dirs.append(top)
-        if top not in listt:
-            dirs.remove(top)
+        if top is not None:
+            dirs.append(top)
 
         top_left = listt[self.identification - 11]
-        dirs.append(top_left) 
-        if top_left not in listt:
-            dirs.remove(top_left)
+        if top_left is not  None:
+            dirs.append(top_left)
 
         left = listt[self.identification - 10]
-        dirs.append(left)
-        if left not in listt:
-            dirs.remove(left)
+        if left is not None:
+            dirs.append(left)
 
         bottom_left = listt[self.identification - 9]
-        dirs.append(bottom_left)
-        if bottom_left not in listt:
-            dirs.remove(bottom_left)
+        if bottom_left is not None:
+            dirs.append(bottom_left)
 
         bottom = listt[self.identification + 1]
-        dirs.append(bottom) 
-        if bottom not in listt:
-            dirs.remove(bottom)
+        if bottom is not None:
+            dirs.append(bottom)
 
         bottom_right = listt[self.identification + 11]
-        dirs.append(bottom_right)
-        if bottom_right not in listt:
-            bottom_right = None
+        if bottom_right is not None:
+            dirs.append(bottom_right)
 
         self.adjacents = list(dirs)
 
